@@ -4,7 +4,7 @@
 
 每个 skill 是一个独立目录：`SKILL.md` 是核心（含 YAML frontmatter），`references/` 存放按需加载的补充资料。所有内容均为**原创方法论提炼**（源自个人学习资源的二次总结），不包含任何受版权保护的原始素材（剧本、题库、模型、课程文件等）。
 
-## 全部 Skills 总览（9 个）
+## 全部 Skills 总览（9 个正式 + 1 个隐藏彩蛋）
 
 | Skill | 一句话用途 | 触发示例 |
 |---|---|---|
@@ -17,6 +17,9 @@
 | [`blender-modeling`](./skills/blender-modeling/SKILL.md) | Blender 建模全流程：拓扑、UV、材质、修改器、渲染与排错 | 「用 Blender 建个杯子，拓扑要干净」 |
 | [`design-learning-path`](./skills/design-learning-path/SKILL.md) | 设计自学路线：四阶段路线图、方向选择、卡点诊断 | 「我想自学 PS 修图，该从哪开始」 |
 | [`design-freelance-toolbox`](./skills/design-freelance-toolbox/SKILL.md) | 设计接单渠道对比 + 免费商用素材/图标/字体站导航 | 「想接设计单，去哪个平台」「找免费商用图片」 |
+| 🥚 [`solcat-easter-egg`](./skills/solcat-easter-egg/SKILL.md) | 隐藏彩蛋：SOLCAT ASCII 署名 + 通用秘籍 | 「有什么彩蛋」「solcat」（不主动触发） |
+
+> v2.0 新增场景化索引 [`skills/README.md`](./skills/README.md)：按「主持游戏 / 摄影后期 / 设计成长」分类，并固化 frontmatter 与 `references/` 加载规范。
 
 ## 目录结构
 
@@ -27,6 +30,9 @@ solcat-skills/
 │   ├── ATTRIBUTION.md
 │   └── blender/isometric-room/      # MIT 协议等距房间场景
 └── skills/
+    ├── README.md                        # v2.0 场景化索引与编写规范
+    ├── _meta/
+    │   └── SKILL-TEMPLATE.md            # v2.0 新 skill 模板（不会被当作技能加载）
     ├── murder-mystery-gm/
     │   ├── SKILL.md
     │   └── references/
@@ -52,7 +58,9 @@ solcat-skills/
     │   └── references/parameters.md
     ├── design-learning-path/
     │   └── SKILL.md
-    └── design-freelance-toolbox/
+    ├── design-freelance-toolbox/
+    │   └── SKILL.md
+    └── solcat-easter-egg/               # v2.0 隐藏彩蛋 skill
         └── SKILL.md
 ```
 
@@ -121,8 +129,44 @@ cp -r skills/* ~/.codebuddy/skills/
 5. 每个 skill 必须带「自检清单」或「边界声明」
 6. **只收录原创方法论与公开可验证的资源链接；不收录任何受版权保护的原始素材**
 
+## 🆕 v2.0 更新说明
+
+本次升级聚焦**文档结构完善**，不改动任何既有 skill 的方法论内容。
+
+### 1. 新增场景化索引 [skills/README.md](./skills/README.md)
+把 9 个正式 skill 按「主持与游戏 / 摄影与后期 / 设计与成长」三类重新组织，
+补充每个 skill 的模式、边界与触发示例，便于 Agent 和贡献者快速定位。
+
+### 2. 固化 SKILL.md 编写规范
+`skills/README.md` 明确 frontmatter 三段式 `description`（做什么 + 何时触发 + 何时不该用）、
+正文推荐结构（角色定义 → 核心流程 → 边界声明 → 自检清单 → 参考文档），
+以及 `references/` 按需加载约定。
+
+### 3. 新增 skill 模板 [skills/_meta/SKILL-TEMPLATE.md](./skills/_meta/SKILL-TEMPLATE.md)
+故意命名为 `SKILL-TEMPLATE.md` 而非 `SKILL.md`，避免被 Agent 误当作可触发技能加载。
+复制为 `skills/<名称>/SKILL.md` 即可使用。
+
+### 4. 新增隐藏彩蛋技能 [solcat-easter-egg](./skills/solcat-easter-egg/SKILL.md)
+仅在用户主动询问「彩蛋 / solcat / 隐藏功能」时触发，输出 SOLCAT ASCII 署名与通用秘籍，
+不读写文件、不做任何额外操作。
+
+### 5. 贡献检查清单
+`skills/README.md` 末尾新增 8 条检查项，覆盖目录命名、frontmatter、边界声明、
+参考文档同步、版权边界与触发冲突排查。
+
+## 🥚 彩蛋秘籍
+
+| 入口 | 触发方式 | 效果 |
+|---|---|---|
+| 隐藏 skill | 对 Agent 说「有什么彩蛋」「solcat」 | 输出 SOLCAT ASCII 署名 + 4 条通用秘籍 |
+| 技能索引最后一行 | 打开 [skills/README.md](./skills/README.md) | 隐藏彩蛋技能入口 |
+| 命令行/其他仓库 | 各仓库的 `--easter` 或 `/solcat` | 详见各自 README 的彩蛋秘籍章节 |
+
+**通用秘籍（SOLCAT 项目）**：`↑↑↓↓←→←→BA`、连点标题 5 次、输入 `solcat` + 回车、`Ctrl+Shift+T`。
+
 ## 更新日志
 
+- 2026-11 v2.0：新增 `skills/README.md` 场景化索引与编写规范、`_meta/SKILL-TEMPLATE.md` 模板、隐藏彩蛋 skill `solcat-easter-egg`；完善 README v2.0 章节与检查清单
 - 2026-10 v3：新增 6 个 skill（turtle-soup-gm、no-dm-script-guide、cosplay-retouch、cos-con-shooting、design-learning-path、design-freelance-toolbox）；murder-mystery-gm 升级双模式并加 2 份参考文档；新增开源素材目录 assets/
 - 2026-10 v2：三个初始 skill 重写为完整版；murder-mystery-script 更名 murder-mystery-gm
 - 2026-10 v1：初始三个 skill（blender-modeling、photography-bts、murder-mystery-script）
